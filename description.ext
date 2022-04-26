@@ -1,0 +1,221 @@
+// Author
+author = "Tonic";     
+
+// Mission name
+onLoadName = "Escape From ARMA"; 
+
+// Description
+onLoadMission = "Anywhere near Chernarus in near Future ..."; 
+
+// Preview picture
+// 2:1 aspect ratio (different aspect are rendered correctly as well, but won't cover the whole area).
+// Ideally 1024x512 pixels.
+loadScreen = "pictures\hg_chapter_1_1024x512.paa";
+
+class Header
+{
+	gameType = CTI;     // Game type
+	minPlayers = 1;	    // minimum number of players the mission supports
+	maxPlayers = 4;		// maximum number of players the mission supports
+};
+
+// Enables debug console for admins
+enableDebugConsole = 1;
+
+disabledAI = 1;
+respawn = 3;
+respawnDialog = 1;
+respawnDelay = 1;
+//playerRespawnTime=10;
+respawnButton = 1;
+
+
+// GRAD MONEYMENU
+#include "modules\grad-moneymenu\grad_moneymenu.hpp"
+
+// GRAD LISTBUYMENU
+#include "modules\grad-listBuymenu\grad_listBuymenu.hpp"
+
+// HALs STORE
+#define HALs_DEF_INIT
+#include "HALs\Addons\main\config.hpp"
+#undef HALs_DEF_INIT
+
+// Declare Functions
+class CfgFunctions {
+	// GRAD PERSISTENCE
+    #include "modules\grad-persistence\cfgFunctions.hpp"
+	// GRAD MONEYMENU
+    #include "modules\grad-moneymenu\cfgFunctions.hpp"
+	// GRAD LISTBUYMENU
+    #include "modules\grad-listBuymenu\cfgFunctions.hpp"
+    // HALs STORE
+	#define HALs_DEF_FUNCTIONS
+    #include "HALs\Addons\main\config.hpp"
+	#undef HALs_DEF_FUNCTIONS
+};
+
+
+
+
+
+
+// GRAD PERSISTENCE CONFIG
+class CfgGradPersistence {
+    missionTag = "efa_1";
+    loadOnMissionStart = 1;
+    missionWaitCondition = "true";
+    playerWaitCondition = "true";
+
+    saveUnits = 2;
+    saveVehicles = 2;
+    saveContainers = 2;
+    saveStatics = 2;
+    saveGradFortificationsStatics = 2;
+
+    savePlayerInventory = 1;
+    savePlayerDamage = 1;
+    savePlayerPosition = 1;
+    savePlayerMoney = 1;
+
+    saveMarkers = 2;
+    saveTasks = 0;
+    saveTriggers = 0;
+
+    saveTeamAccounts = 1;
+    saveTimeAndDate = 1;
+
+//  blacklist[] = {
+//        "B_Truck_01_mover_F",
+//        "MapBoard_seismic_F"
+//    };
+
+    class customVariables {
+        //class selectTrigger {
+        //    varName = "wasExecuted";
+        //    varNamespace = "trigger";
+        //    public = 0;
+        //};
+        class vcomDisable {
+            varName = "Vcm_Disable";
+            varNamespace = "group";
+            public = 0;
+        };
+        class lambsDisableGroupAi {
+            varName = "lambs_danger_disableGroupAI";
+            varNamespace = "group";
+            public = 0;
+        };
+        class lambsDisableAi {
+            varName = "lambs_danger_disableAI";
+            varNamespace = "unit";
+            public = 0;
+        };
+    };
+};
+
+
+
+// GRAD MONEYMENU CONFIG
+class CfgGradMoneymenu {
+    canGiveDefault = 1;                                                    
+    canTransferToSidesDefault[] = {"east","west","independent","civilian"};
+    canTakeFromDeadDefault = 1;        
+    canSendDirectlyDefault = 0;                                    
+    canTakeFromSurrenderedDefault = 1;                                     
+    startMoney = 1000;                                                        
+    startBankBalance = 10000;                                                  
+    playersLoseMoneyOnDeath = 1;
+    atmObjects[] = {"Land_Atm_01_F"};                                      
+};
+
+
+
+// GRAD LISTBUYMENU CONFIG
+class CfgGradBuymenu {
+    vehicleMarkers = 1;
+    tracking = 0;
+    trackingTag = "myMission";
+
+    //buyables set:
+    class AmericanStuff {
+
+        //category:  
+        class Weapons {
+            kindOf = "Weapons";
+            displayName = "Weapons";
+
+            //items of this category:
+            class rhs_weap_m240G {
+                displayName = "M240G";
+                description = "The M240 is a belt-fed, gas-operated general purpose machine gun firing the 7.62x51mm NATO cartridge.";
+                price = 2500;
+                stock = 5;
+                opticsItem = "optic_Aco";
+            };
+        };
+
+        class Units {
+            displayname = "Units";
+            kindOf = "Units";
+            tracking = 0;
+
+            class B_Soldier_SL_F {
+                displayName = "NATO Squadleader (x3)";
+                description = "This is a team of NATO squad leaders.";
+                price = 3000;
+                amount = 3;
+                stock = 5;
+                code = "{_x removeWeaponGlobal (primaryWeapon _x)} forEach units (_this select 2)";
+            };
+        };
+
+        class Vehicles {
+            displayName = "Vehicles";
+            kindOf = "Vehicles";
+
+            class rhsusf_m1151_usmc_wd {
+                displayName = "HUMMER";
+                description = "This thing is quick";
+                price = 299;
+                stock = 10;
+                picture = "myPictureFolder\sportscar.paa";  //this item uses a custom picture
+                code = "(_this select 2) setFuel 0.5";  //this car will spawn with half a tank of gas                
+                spawnEmpty = true;
+                vehicleInit = "['Orange',false]";
+            };
+        };
+    };
+
+    //a different set of buyables
+    class RussianStuff {        
+        class Vehicles {
+            displayName = "Vehicles";
+            kindOf = "Vehicles";
+
+            class C_Hatchback_01_sport_F {
+                displayName = "Hatchback (Sport)";
+                description = "This thing is quick";
+                price = 4000;
+                stock = 10;
+                picture = "myPictureFolder\sportscar.paa";  //this item uses a custom picture
+                code = "(_this select 2) setFuel 0.5";  //this car will spawn with half a tank of gas                
+                spawnEmpty = true;
+                vehicleInit = "['Orange',false]";
+            };
+        };
+
+        class Items {
+            displayName = "Items";
+            kindOf = "Items";
+
+            class ACE_fieldDressing {
+                displayName = "Bandages (x10)";
+                description = "10 simple bandages in sterile packaging.";
+                amount = 10;
+                price = 100;
+                stock = 40;     //note that a total of 400 bandages can be bought (in sets of 10)
+            };
+        };
+    };
+};

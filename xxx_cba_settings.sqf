@@ -1,0 +1,1 @@
+force Vcm_ActivateAI = true;

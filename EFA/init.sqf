@@ -1,0 +1,1 @@
+EFA_fnc_transfer_cargo = compile preprocessFileLineNumbers ("EFA\functions\fn_transfer_cargo.sqf");

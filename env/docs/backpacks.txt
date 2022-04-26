@@ -1,0 +1,2 @@
+#CIV Backpacks
+["B_CivilianBackpack_01_Everyday_Astra_F","B_CivilianBackpack_01_Everyday_Black_F","B_CivilianBackpack_01_Everyday_Vrana_F","B_CivilianBackpack_01_Everyday_IDAP_F","B_Carryall_green_F","B_FieldPack_cbr","B_FieldPack_khk","B_Carryall_cbr","B_Kitbag_tan","B_CivilianBackpack_01_Sport_Blue_F","B_CivilianBackpack_01_Sport_Green_F","B_CivilianBackpack_01_Sport_Red_F","B_TacticalPack_blk"]
