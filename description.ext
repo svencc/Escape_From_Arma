@@ -10,7 +10,7 @@ onLoadMission = "Anywhere near Chernarus in near Future ...";
 // Preview picture
 // 2:1 aspect ratio (different aspect are rendered correctly as well, but won't cover the whole area).
 // Ideally 1024x512 pixels.
-loadScreen = "pictures\hg_chapter_1_1024x512.paa";
+loadScreen = "pictures\EFA.paa";
 
 class Header
 {
