@@ -1,0 +1,24 @@
+#Travel System
+Travel Cards kaufen -> Teleport
+Travel Cards kaufen -> Inject + Extract Ticket
+
+#Huge Raids
+Flugzeit Zeit buchen (Simplex Support)
+Cargo Kisten buchen
+
+
+
+
+#Zombies
+
+#ACEX Rations
+Items in Corpse-Loot
+Items in Loot-Kisten
+Brunnen -> Wasser -> Canteen auffüllen
+-> Abschalten der Ravage Survival Items! (Loot)
+
+#Shop System
+Waffen & Items pflegen für Kauf & Verkauf
+    Nur Sachen von Wert einpflegen
+    Waffen; Munition; Scopes; Helme 
+    keine Kleidung; keine Rucksäcke; keine Westen

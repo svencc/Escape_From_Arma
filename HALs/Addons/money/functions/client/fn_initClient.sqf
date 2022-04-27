@@ -29,7 +29,7 @@ player addEventHandler ["Take", {
 	    case "rvg_money": {_money = HALs_money_oldManItemsPrice select 1};
 		default {_money = 0};
 	};
-hint str _money;
+
 	if (_money > 0) then {
 		player removeItem _item;
 		[player, _money] call HALs_money_fnc_addFunds;
