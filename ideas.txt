@@ -22,3 +22,161 @@ Waffen & Items pflegen für Kauf & Verkauf
     Nur Sachen von Wert einpflegen
     Waffen; Munition; Scopes; Helme 
     keine Kleidung; keine Rucksäcke; keine Westen
+
+
+#Ambient
+Nebel passt sich der Spielerhöhe an; damit man in den tieferen Regionen (Küste), 
+auch etwas sehen kann; aber dann später im Inland auch noch Nebel in den Tälern sieht!
+
+
+
+
+#TODO
+-> INFILTIRATE Raid
+-> EXFILITRATE Raid
+
+-> RAID Zone x
+---> TRIGGER RAID ZONE für RAVAGE AMBIENT AI
+
+
+LOOT SPAWN SCRIPT ...
+
+
+
+
+
+
+#SCRIPTS:
+
+#PORTAL
+_portals = nearestObjects [this, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+    this addAction [format["Infiltrate to: %1", name (nearestLocationWithDubbing [_infilPortalPosition, "nameVillage"]) ], {}]; 
+  }  
+} forEach _portals;
+
+_portals = nearestObjects [this, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+    this addAction [format["Infiltrate to: %1", nearestLocationWithDubbing _infilPortalPosition], {}]; 
+  }  
+} forEach _portals;
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+    systemchat format["Infiltrate to: %1", text nearestLocation [_infilPortalPosition,"nameVillage"]];
+  }  
+} forEach _portals;
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+    portal addAction [
+      format["Infiltrate to: %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      {player setPos _this},
+      getPos _x
+    ]
+  }  
+} forEach _portals;
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+    portal addAction [
+      format["Infiltrate to: %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      {player setPos (_this select 3)},
+      getPos _x
+    ]
+  }  
+} forEach _portals;
+
+
+
+
+
+"PORTAL -> INFILTRATION PORTALS:";
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+    this addAction [
+      format["Infiltrate to: %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      {player setPos (_this select 3)},
+      getPos _x
+    ]
+  }  
+} forEach _portals;
+
+
+
+"EXILTRATION PORTALS -> PORTAL:";
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isExfiltrationPortal", false]) then { 
+    private _homePortalPosition = getPos this; 
+    _x addAction [
+      format["Exfiltrate to: %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
+      {player setPos (_this select 3)},
+      getPos this
+    ]
+  }  
+} forEach _portals;
+
+
+
+
+
+
+
+
+
+
+#LOOT SPAWNER
+_terrainObjects = nearestObjects [player, [], 5]; 
+{ 
+  if (_x != player) then {
+    _x addAction ["title",{}];
+  } 
+} forEach _terrainObjects;
+hint str _terrainObjects;
+
+
+
+_terrainObjects = nearestTerrainObjects [player, [], 5];    
+{    
+  if (_x != player) then {    
+    systemChat format["%1: %2", str _x, str (getPos _x)];  
+  }     
+        
+} forEach _terrainObjects;
+
+_objects = position player nearObjects 50;
+{    
+  if (_x != player) then {    
+    systemChat format["%1: %2", str _x, str (getPos _x)];  
+  }     
+        
+} forEach _objects;
+
+
+# terrainObjects gibt die shapes zurück. Also arbeiten wir mit den shape Namen. Ebenso haben wir die Position!
+
+
+
+
+#Curatable Items
+{
+  _x addCuratorEditableObjects [
+    entities [[],["Logic"], true],
+    true
+  ];
+} count allCurators;
