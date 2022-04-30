@@ -108,7 +108,7 @@ _portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];
   if (_x getVariable ["isInfiltrationPortal", false]) then { 
     private _infilPortalPosition = getPos _x; 
     this addAction [
-      format["Infiltrate to: %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      format["Infiltrate t0o location : %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
       {player setPos (_this select 3)},
       getPos _x
     ]
@@ -124,7 +124,7 @@ _portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];
   if (_x getVariable ["isExfiltrationPortal", false]) then { 
     private _homePortalPosition = getPos this; 
     _x addAction [
-      format["Exfiltrate to: %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
+      format["Exfiltrate to location near: %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
       {player setPos (_this select 3)},
       getPos this
     ]
@@ -180,3 +180,34 @@ _objects = position player nearObjects 50;
     true
   ];
 } count allCurators;
+
+
+-> auto draw
+"jk_extraction"
+
+-> respawn empty!
+
+
+
+
+#SAVE/PERSIST VIA PLAYER ACTION
+[loud4,"L1"] remoteExec ["say3d",[0,-2] select isDedicated,false];
+remoteExec ["[true,5] call grad_persistence_fnc_saveMission;", 2];	
+remoteExec ["[] call grad_persistence_fnc_clearMissionData", 2];	
+
+this addAction [
+  "<t color='#00FF00'>PERSIST</t>",
+  {[true,5] call grad_persistence_fnc_saveMission;}
+];
+
+this addAction [
+  "<t color='#0000FF'>LOAD</t>",
+  {[] call grad_persistence_fnc_loadMission;}
+];
+
+this addAction [
+  "<t color='#FF0000'>XXX CLEAR SAVEGAME XXX</t>",
+  {[] call grad_persistence_fnc_clearMissionData;}
+];
+
+=========> ACE INTERACTION machen
