@@ -99,8 +99,7 @@ _portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];
 
 
 
-
-
+### V1:
 "PORTAL -> INFILTRATION PORTALS:";
 
 _portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
@@ -130,6 +129,358 @@ _portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];
     ]
   }  
 } forEach _portals;
+
+### V2:
+"PORTAL -> INFILTRATION PORTALS:";
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+
+    private _newMarker = createMarker[
+      format["infil_%1_%2", text nearestLocation [_infilPortalPosition,"nameVillage"], time],
+      _infilPortalPosition
+    ];
+    _newMarker setMarkerType "jk_extraction";
+
+    this addAction [
+      format["Infiltrate to location near : %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      {player setPos (_this select 3)},
+      getPos _x
+    ]
+  }  
+} forEach _portals;
+
+
+
+"EXILTRATION PORTALS -> PORTAL:";
+
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isExfiltrationPortal", false]) then { 
+    private _homePortalPosition = getPos this; 
+
+    private _newMarker = createMarker[
+      format["infil_%1_%2", text nearestLocation [_homePortalPosition,"nameVillage"], time],
+      _homePortalPosition
+    ];
+  	_newMarker setMarkerColorLocal "ColorRed";
+    _newMarker setMarkerType "jk_extraction";
+
+    _x addAction [
+      format["Exfiltrate to location near: %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
+      {player setPos (_this select 3)},
+      getPos this
+    ]
+  }  
+} forEach _portals;
+
+
+
+### V3:
+"PORTAL -> BASEMENT PORTAL:";
+private _mainBasementPortal = this;
+private _mainBasementActionItemName = format["basement_%1", time];
+private _mainBasementActionItem = [
+  _mainBasementActionItemName,
+  "Infiltrate to ...",
+  "jk_tarkov_markers\data\extraction_point.paa",
+  {},
+  {true},
+  {},
+  [],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[_mainBasementPortal, 0, [], _mainBasementActionItem] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+"PORTAL -> INFILTRATION PORTALS:";
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+
+    private _newMarker = createMarker[
+      format["infil_%1_%2", text nearestLocation [_infilPortalPosition,"nameVillage"], time],
+      _infilPortalPosition
+    ];
+    _newMarker setMarkerType "jk_extraction";
+
+    private _portalsInfilAction = [
+      format["infil_%1_%2", text nearestLocation [_infilPortalPosition,"nameVillage"], time],
+      format["... location near %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      "jk_tarkov_markers\data\extraction_point.paa",
+      {
+        params ["_target", "_player", "_args"];
+        _player setPos (_args select 0);
+      },
+      {true},
+      {},
+      [_infilPortalPosition],
+      nil,
+      2
+    ] call ace_interact_menu_fnc_createAction;
+    [_mainBasementPortal, 0, [_mainBasementActionItemName], _portalsInfilAction] call ace_interact_menu_fnc_addActionToObject;
+  }  
+} forEach _portals;
+
+
+
+"EXILTRATION PORTALS -> PORTAL:";
+{  
+  if (_x getVariable ["isExfiltrationPortal", false]) then { 
+    private _homePortal = _mainBasementPortal; 
+    private _homePortalPosition = getPos _homePortal; 
+    private _exfilPortal = _x;
+    private _exfilPortalPosition = getPos _x;
+
+    private _newMarker = createMarker[
+      format["infil_%1_%2", text nearestLocation [_homePortalPosition,"nameVillage"], time],
+      _homePortalPosition
+    ];
+  	_newMarker setMarkerColorLocal "ColorRed";
+    _newMarker setMarkerType "jk_extraction";
+
+    private _mainExfilActionItemName = format["exfil_%1", str _exfilPortalPosition];
+    private _mainExfilActionItem = [
+      _mainExfilActionItemName,
+      "Exfiltrate to ...",
+      "jk_tarkov_markers\data\extraction_point.paa",
+      {},
+      {true},
+      {},
+      [],
+      nil,
+      2
+    ] call ace_interact_menu_fnc_createAction;
+    [_exfilPortal, 0, [], _mainExfilActionItem] call ace_interact_menu_fnc_addActionToObject;
+
+
+    private _portalsExfilAction = [
+      format["exfil_%1_%2", text nearestLocation [_homePortalPosition,"nameVillage"], time],
+      format["... location near %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
+      "jk_tarkov_markers\data\extraction_point.paa",
+      {
+        params ["_target", "_player", "_args"];
+        _player setPos (_args select 0);
+      },
+      {true},
+      {},
+      [_homePortalPosition],
+      nil,
+      2
+    ] call ace_interact_menu_fnc_createAction;
+    [_exfilPortal, 0, [_mainExfilActionItemName], _portalsExfilAction] call ace_interact_menu_fnc_addActionToObject;
+
+    _x addAction [
+      format["Exfiltrate to location near: %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
+      {player setPos (_this select 3)},
+      getPos _homePortal
+    ]
+  }  
+} forEach _portals;
+
+
+
+
+### V4:
+"PORTAL -> BASEMENT PORTAL:";
+private _basementPortal = this;
+private _basementPortalPosition = getPos _basementPortal;
+private _basementMainActionItemName = format["basement_%1", _basementPortalPosition];
+private _basementMainActionItem = [
+  _basementMainActionItemName,
+  "Infiltrate to ...",
+  "jk_tarkov_markers\data\extraction_point.paa",
+  {},
+  {true},
+  {},
+  [],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[_basementPortal, 0, [], _basementMainActionItem] call ace_interact_menu_fnc_addActionToObject;
+
+private _newBasementMarker = createMarker[
+  format["basement_marker_%1", _basementPortalPosition],
+  _basementPortalPosition
+];
+_newBasementMarker setMarkerColorLocal "ColorRed";
+_newBasementMarker setMarkerType "jk_extraction";
+
+
+"PORTAL -> INFILTRATION PORTALS:";
+_portals = nearestObjects [portal, ["Land_Calvary_03_F"], 20000];  
+{  
+  if (_x getVariable ["isInfiltrationPortal", false]) then { 
+    private _infilPortalPosition = getPos _x; 
+
+    private _newMarker = createMarker[
+      format["infil_marker_%1_%2", _infilPortalPosition, time],
+      _infilPortalPosition
+    ];
+    _newMarker setMarkerType "jk_extraction";
+
+    private _portalsInfilAction = [
+      format["infil_%1_%2", _infilPortalPosition, time],
+      format["... location near %1", text nearestLocation [_infilPortalPosition,"nameVillage"]],
+      "jk_tarkov_markers\data\extraction_point.paa",
+      {
+        params ["_target", "_player", "_args"];
+        _player setPos (_args select 0);
+      },
+      {true},
+      {},
+      [_infilPortalPosition],
+      nil,
+      2
+    ] call ace_interact_menu_fnc_createAction;
+    [_basementPortal, 0, [_basementMainActionItemName], _portalsInfilAction] call ace_interact_menu_fnc_addActionToObject;
+  }  
+} forEach _portals;
+
+
+
+"EXILTRATION PORTALS -> PORTAL:";
+{  
+  if (_x getVariable ["isExfiltrationPortal", false]) then { 
+    private _homePortal = _basementPortal; 
+    private _homePortalPosition = getPos _homePortal; 
+    private _exfilPortal = _x;
+    private _exfilPortalPosition = getPos _x;
+
+    private _exfilMainActionItemName = format["exfil_%1", _exfilPortalPosition];
+    private _exfilMainActionItem = [
+      _exfilMainActionItemName,
+      "Exfiltrate to ...",
+      "jk_tarkov_markers\data\extraction_point.paa",
+      {},
+      {true},
+      {},
+      [],
+      nil,
+      2
+    ] call ace_interact_menu_fnc_createAction;
+    [_exfilPortal, 0, [], _exfilMainActionItem] call ace_interact_menu_fnc_addActionToObject;
+
+
+    private _portalsExfilAction = [
+      format["exfil_%1_%2", _homePortalPosition, time],
+      format["... location near %1", text nearestLocation [_homePortalPosition,"nameVillage"]],
+      "jk_tarkov_markers\data\extraction_point.paa",
+      {
+        params ["_target", "_player", "_args"];
+        _player setPos (_args select 0);
+      },
+      {true},
+      {},
+      [_homePortalPosition],
+      nil,
+      2
+    ] call ace_interact_menu_fnc_createAction;
+    [_exfilPortal, 0, [_exfilMainActionItemName], _portalsExfilAction] call ace_interact_menu_fnc_addActionToObject;
+  }  
+} forEach _portals;
+
+
+
+
+#PERSISTENCE LAPTOP:
+
+#SAVE/PERSIST VIA PLAYER ACTION
+[loud4,"L1"] remoteExec ["say3d",[0,-2] select isDedicated,false];
+remoteExec ["[true,5] call grad_persistence_fnc_saveMission;", 2];	
+remoteExec ["[] call grad_persistence_fnc_clearMissionData", 2];	
+
+this addAction [
+  "<t color='#00FF00'>PERSIST</t>",
+  {[true,5] call grad_persistence_fnc_saveMission;}
+];
+
+this addAction [
+  "<t color='#0000FF'>LOAD</t>",
+  {[] call grad_persistence_fnc_loadMission;}
+];
+
+this addAction [
+  "<t color='#FF0000'>XXX CLEAR SAVEGAME XXX</t>",
+  {[] call grad_persistence_fnc_clearMissionData;}
+];
+
+=========> ACE INTERACTION machen
+
+"PERSISTENCE TERMINAL:";
+private _persistenceTerminal = this;
+private _persistenceTerminalPosition = getPos _persistenceTerminal;
+
+private _persistenceMainActionItemName = format["persistence_terminal_%1", _persistenceTerminalPosition];
+private _persistenceMainActionItem = [
+  _persistenceMainActionItemName,
+  "Persistence Terminal",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa",
+  {},
+  {true},
+  {},
+  [],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[_persistenceTerminal, 0, [], _persistenceMainActionItem] call ace_interact_menu_fnc_addActionToObject;
+
+
+private _persistAction = [
+  format["persistence_terminal_persist_%1_%2", _persistenceTerminalPosition, time],
+  "<t color='#00FF00'>Save</t>",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa",
+  {
+    params ["_target", "_player", "_args"];
+    [true,5] call grad_persistence_fnc_saveMission;
+  },
+  {true},
+  {},
+  [],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[_persistenceTerminal, 0, [_persistenceMainActionItemName], _persistAction] call ace_interact_menu_fnc_addActionToObject;
+
+private _loadAction = [
+  format["persistence_terminal_load_%1_%2", _persistenceTerminalPosition, time],
+  "<t color='#FFFF00'>Load Savegame</t>",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa",
+  {
+    params ["_target", "_player", "_args"];
+    [] call grad_persistence_fnc_loadMission;
+  },
+  {true},
+  {},
+  [],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[_persistenceTerminal, 0, [_persistenceMainActionItemName], _loadAction] call ace_interact_menu_fnc_addActionToObject;
+
+private _deleteAction = [
+  format["persistence_terminal_delete_%1_%2", _persistenceTerminalPosition, time],
+  "<t color='#FF0000'>Delete Savegame</t>",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa",
+  {
+    params ["_target", "_player", "_args"];
+    [] call grad_persistence_fnc_clearMissionData;
+  },
+  {true},
+  {},
+  [],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[_persistenceTerminal, 0, [_persistenceMainActionItemName], _deleteAction] call ace_interact_menu_fnc_addActionToObject;
+
+
+
 
 
 
@@ -190,24 +541,57 @@ _objects = position player nearObjects 50;
 
 
 
-#SAVE/PERSIST VIA PLAYER ACTION
-[loud4,"L1"] remoteExec ["say3d",[0,-2] select isDedicated,false];
-remoteExec ["[true,5] call grad_persistence_fnc_saveMission;", 2];	
-remoteExec ["[] call grad_persistence_fnc_clearMissionData", 2];	
 
-this addAction [
-  "<t color='#00FF00'>PERSIST</t>",
-  {[true,5] call grad_persistence_fnc_saveMission;}
-];
 
-this addAction [
-  "<t color='#0000FF'>LOAD</t>",
-  {[] call grad_persistence_fnc_loadMission;}
-];
 
-this addAction [
-  "<t color='#FF0000'>XXX CLEAR SAVEGAME XXX</t>",
-  {[] call grad_persistence_fnc_clearMissionData;}
-];
 
-=========> ACE INTERACTION machen
+
+
+
+
+
+
+
+
+// ACE EXAMPLE
+// init.sqf
+private _fnc_howAreYou = {
+    [_this, {
+        params ["_target", "_caller", "_args"];
+
+        if (_caller distance cameraOn < 20) then {
+            _caller globalChat "Hallo, wie geht es Ihnen?";
+        };
+        sleep 2;
+
+        if (lifeState _target == "HEALTHY" && {_target distance cameraOn < 20}) then {
+            _target globalChat "Danke, ganz gut.";
+        };
+    }] remoteExec ["spawn"];
+};
+
+private _act_greet = [
+    "commy_HowAreYou",
+    "Begrüßen",
+    "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa",
+    _fnc_howAreYou,
+    {true},
+    {},
+    [],
+    "head",
+    2
+] call ace_interact_menu_fnc_createAction;
+[this, 0, [], _act_greet] call ace_interact_menu_fnc_addActionToObject;
+
+private _act_greet2 = [
+    "commy_HowAreYou2",
+    "Begrüßen2",
+    "\a3\ui_f\data\GUI\RscCommon\RscDebugConsole\feedback_ca.paa",
+    _fnc_howAreYou,
+    {true},
+    {},
+    [],
+    "head",
+    5
+] call ace_interact_menu_fnc_createAction;
+[this, 0, ["commy_HowAreYou"], _act_greet2] call ace_interact_menu_fnc_addActionToObject;

@@ -67,18 +67,18 @@ class CfgGradPersistence {
     missionWaitCondition = "true";
     playerWaitCondition = "true";
 
-    saveUnits = 2;
-    saveVehicles = 2;
+    saveUnits = 0;
+    saveVehicles = 0;
     saveContainers = 2;
-    saveStatics = 2;
-    saveGradFortificationsStatics = 2;
+    saveStatics = 0;
+    saveGradFortificationsStatics = 0;
 
     savePlayerInventory = 1;
     savePlayerDamage = 1;
     savePlayerPosition = 1;
     savePlayerMoney = 1;
 
-    saveMarkers = 2;
+    saveMarkers = 0;
     saveTasks = 0;
     saveTriggers = 0;
 
