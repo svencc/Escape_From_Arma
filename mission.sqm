@@ -12,22 +12,22 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=828;
+		nextID=876;
 	};
 	class MarkerIDProvider
 	{
-		nextID=18;
+		nextID=19;
 	};
 	class LayerIndexProvider
 	{
-		nextID=315;
+		nextID=353;
 	};
 	class Camera
 	{
-		pos[]={13072.803,30.115055,10729.622};
-		dir[]={0.2621339,0.024725469,0.96471471};
-		up[]={-0.0064833653,0.99969423,-0.023860317};
-		aside[]={0.96500969,4.6566129e-010,-0.26221406};
+		pos[]={14350.171,61.927845,13147.542};
+		dir[]={-0.56965685,-0.54155564,-0.61826408};
+		up[]={-0.36696514,0.84066474,-0.3982766};
+		aside[]={-0.73544008,2.4418114e-008,0.67762214};
 	};
 };
 binarizationWanted=0;
@@ -108,13 +108,17 @@ addons[]=
 	"ace_chemlights",
 	"A3_Structures_F_Enoch_Civilian_Accessories",
 	"CUP_CAStructures_E_Misc_Misc_Well",
-	"A3_Structures_F_Exp_Industrial_Fields"
+	"A3_Structures_F_Exp_Industrial_Fields",
+	"rhssaf_c_vehicles",
+	"A3_Props_F_Exp_Commercial_Market",
+	"ace_dragging",
+	"A3_Misc_F_Helpers"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=62;
+		items=66;
 		class Item0
 		{
 			className="ravage";
@@ -533,6 +537,34 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item62
+		{
+			className="rhssaf_c_vehicles";
+			name="RHS: SAF vehicles";
+			author="Red Hammer Studios";
+			url="http://www.rhsmods.org";
+		};
+		class Item63
+		{
+			className="A3_Props_F_Exp";
+			name="Arma 3 Apex - Decorative and Mission Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item64
+		{
+			className="ace_dragging";
+			name="ACE3 - Dragging";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item65
+		{
+			className="A3_Misc_F";
+			name="Arma 3 - 3D Aids and Helpers";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -544,7 +576,8 @@ dlcs[]=
 	"3den_objects_mod",
 	"Heli",
 	"RHS_GREF",
-	"Expansion"
+	"Expansion",
+	"RHS_SAF"
 };
 randomSeed=5606084;
 class ScenarioData
@@ -6642,7 +6675,7 @@ class CustomAttributes
 																"BOOL"
 															};
 														};
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -6983,7 +7016,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=83;
+		items=101;
 		class Item0
 		{
 			dataType="Logic";
@@ -7106,7 +7139,7 @@ class Mission
 									"SCALAR"
 								};
 							};
-							value=2;
+							value=3;
 						};
 					};
 				};
@@ -26220,7 +26253,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="""PERSISTENCE TERMINAL:""; " \n "private _persistenceTerminal = this; " \n "private _persistenceTerminalPosition = getPos _persistenceTerminal; " \n " " \n "private _persistenceMainActionItemName = format[""persistence_terminal_%1"", _persistenceTerminalPosition]; " \n "private _persistenceMainActionItem = [ " \n "  _persistenceMainActionItemName, " \n "  ""Persistence Terminal"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa"", " \n "  {}, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [], _persistenceMainActionItem] call ace_interact_menu_fnc_addActionToObject; " \n " " \n " " \n "private _persistAction = [ " \n "  format[""persistence_terminal_persist_%1_%2"", _persistenceTerminalPosition, time], " \n "  ""<t color='#00FF00'>Save</t>"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa"", " \n "  { " \n "    params [""_target"", ""_player"", ""_args""]; " \n "    [true,5] call grad_persistence_fnc_saveMission; " \n "  }, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [_persistenceMainActionItemName], _persistAction] call ace_interact_menu_fnc_addActionToObject; " \n " " \n "private _loadAction = [ " \n "  format[""persistence_terminal_load_%1_%2"", _persistenceTerminalPosition, time], " \n "  ""<t color='#FFFF00'>Load Savegame</t>"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa"", " \n "  { " \n "    params [""_target"", ""_player"", ""_args""]; " \n "    [] call grad_persistence_fnc_loadMission; " \n "  }, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [_persistenceMainActionItemName], _loadAction] call ace_interact_menu_fnc_addActionToObject; " \n " " \n "private _deleteAction = [ " \n "  format[""persistence_terminal_delete_%1_%2"", _persistenceTerminalPosition, time], " \n "  ""<t color='#FF0000'>Delete Savegame</t>"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa"", " \n "  { " \n "    params [""_target"", ""_player"", ""_args""]; " \n "    [] call grad_persistence_fnc_clearMissionData; " \n "  }, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [_persistenceMainActionItemName], _deleteAction] call ace_interact_menu_fnc_addActionToObject;";
+				init=" " \n """PERSISTENCE TERMINAL:""; " \n "private _persistenceTerminal = this; " \n "private _persistenceTerminalPosition = getPos _persistenceTerminal; " \n " " \n "private _persistenceMainActionItemName = format[""persistence_terminal_%1"", _persistenceTerminalPosition]; " \n "private _persistenceMainActionItem = [ " \n "  _persistenceMainActionItemName, " \n "  ""Persistence Terminal"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\intel_ca.paa"", " \n "  {}, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [], _persistenceMainActionItem] call ace_interact_menu_fnc_addActionToObject; " \n " " \n " " \n "private _persistAction = [ " \n "  format[""persistence_terminal_persist_%1_%2"", _persistenceTerminalPosition, time], " \n "  ""<t color='#00FF00'>Save</t>"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa"", " \n "  { " \n "    params [""_target"", ""_player"", ""_args""]; " \n "    [true,5] call grad_persistence_fnc_saveMission; " \n "  }, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [_persistenceMainActionItemName], _persistAction] call ace_interact_menu_fnc_addActionToObject; " \n " " \n "private _loadAction = [ " \n "  format[""persistence_terminal_load_%1_%2"", _persistenceTerminalPosition, time], " \n "  ""<t color='#FFFF00'>Load Savegame</t>"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa"", " \n "  { " \n "    params [""_target"", ""_player"", ""_args""]; " \n "    [] call grad_persistence_fnc_loadMission; " \n "  }, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [_persistenceMainActionItemName], _loadAction] call ace_interact_menu_fnc_addActionToObject; " \n " " \n "private _deleteAction = [ " \n "  format[""persistence_terminal_delete_%1_%2"", _persistenceTerminalPosition, time], " \n "  ""<t color='#FF0000'>Delete Savegame</t>"", " \n "  ""\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa"", " \n "  { " \n "    params [""_target"", ""_player"", ""_args""]; " \n "    [] call grad_persistence_fnc_clearMissionData; " \n "  }, " \n "  {true}, " \n "  {}, " \n "  [], " \n "  nil, " \n "  2 " \n "] call ace_interact_menu_fnc_createAction; " \n "[_persistenceTerminal, 0, [_persistenceMainActionItemName], _deleteAction] call ace_interact_menu_fnc_addActionToObject;";
 				name="persistence_teriminal_1";
 				disableSimulation=1;
 			};
@@ -26318,7 +26351,7 @@ class Mission
 					name="Randomizer Trigger";
 					class Entities
 					{
-						items=1;
+						items=2;
 						class Item0
 						{
 							dataType="Trigger";
@@ -26336,7 +26369,26 @@ class Mission
 							id=803;
 							type="EmptyDetector";
 						};
+						class Item1
+						{
+							dataType="Trigger";
+							position[]={1537.933,-0.00047302246,1054.137};
+							class Attributes
+							{
+								name="terrain_detector";
+								condition="true";
+								onActivation="private _terrainObjects = nearestTerrainObjects [[worldSize / 2, worldSize /2, 0], [], worldsize / 2];  " \n "{ " \n "  private _model = _x; " \n "  systemChat str _model; " \n "} forEach _terrainObjects;";
+								sizeA=0;
+								sizeB=0;
+								isServerOnly=1;
+								triggerInterval=10;
+							};
+							id=874;
+							type="EmptyDetector";
+							atlOffset=86.26001;
+						};
 					};
+					atlOffset=-78.46286;
 				};
 				class Item1
 				{
@@ -26368,7 +26420,7 @@ class Mission
 				};
 			};
 			id=804;
-			atlOffset=-45.463226;
+			atlOffset=-271.70654;
 		};
 		class Item74
 		{
@@ -26766,7 +26818,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13064.636,29.035492,10728.882};
-				angles[]={0,5.9425945,-0};
+				angles[]={0,5.9425945,0};
 			};
 			side="Empty";
 			flags=5;
@@ -26801,7 +26853,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13049.847,29.087393,10696.955};
-				angles[]={-0,0.79346162,0};
+				angles[]={0,0.79346162,0};
 			};
 			side="Empty";
 			flags=4;
@@ -26818,7 +26870,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13051.251,29.187368,10700.721};
-				angles[]={-0,0.79374087,0};
+				angles[]={0,0.79374087,0};
 			};
 			side="Empty";
 			flags=4;
@@ -26846,6 +26898,700 @@ class Mission
 			id=827;
 			type="Land_ConcreteWell_01_F";
 			atlOffset=0.51967049;
+		};
+		class Item83
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13027.852,29.61558,10749.446};
+				angles[]={0,3.6602757,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=829;
+			type="rhsgref_cdf_reg_uaz";
+		};
+		class Item84
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12999.744,30.171843,10735.79};
+				angles[]={6.2781935,5.366364,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="transport_1";
+				textures="rhs_olive";
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+				reportOwnPosition=1;
+			};
+			id=832;
+			type="rhssaf_m1152_TCV_olive";
+			atlOffset=-2.0980835e-005;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""rhs_weap_m80"",""FirstAidKit"",""Medikit""],[2,10,1]],[[""rhsgref_30rnd_556x45_m21"",""rhssaf_30Rnd_762x39mm_M67"",""rhsgref_10Rnd_792x57_m76"",""rhs_100Rnd_762x54mmR"",""rhs_mag_smaw_HEAA"",""rhssaf_mag_brd_m83_green"",""rhssaf_mag_brd_m83_red"",""rhssaf_mag_brd_m83_white""],[20,20,10,5,5,2,2,4]],[[""ToolKit""],[1]],[[""rhssaf_kitbag_smb""],[1]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="rhs_olive";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=18;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="hide_spare";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item2
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="m1152_tent_Hide";
+												};
+											};
+											class Item3
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item4
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="door_LF";
+												};
+											};
+											class Item5
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item6
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="door_RF";
+												};
+											};
+											class Item7
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item8
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="iff_hide";
+												};
+											};
+											class Item9
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item10
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="dwf_kit_Hide";
+												};
+											};
+											class Item11
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item12
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="snorkel_lower";
+												};
+											};
+											class Item13
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+											class Item14
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="BFT_Hide";
+												};
+											};
+											class Item15
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+											class Item16
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="Antennas_Hide";
+												};
+											};
+											class Item17
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item85
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13000.298,29.662365,10735.034};
+				angles[]={0,2.2259755,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="this attachTo [transport_1];";
+				name="kiste_1";
+				disableSimulation=1;
+			};
+			id=834;
+			type="Land_WoodenCrate_01_F";
+			atlOffset=0.92900085;
+		};
+		class Item86
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13002.524,30.418728,10727.584};
+				angles[]={0,5.1533747,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				textures="standard";
+			};
+			id=854;
+			type="rhs_tigr_msv";
+			atlOffset=-5.7220459e-006;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="VehicleCustomization";
+					expression="if (local _this) then {([_this] + _value + [true]) call (uinamespace getvariable 'BIS_fnc_initVehicle')};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="standard";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=1;
+												};
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=2;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="spare_hide";
+												};
+											};
+											class Item1
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"SCALAR"
+														};
+													};
+													value=0;
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item87
+		{
+			dataType="Marker";
+			position[]={3775.189,310.83701,8810.1689};
+			name="marker_18";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=860;
+			atlOffset=0.00033569336;
+		};
+		class Item88
+		{
+			dataType="Marker";
+			position[]={8147.2959,417.91034,9032.0195};
+			name="marker_19";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=861;
+			atlOffset=0.00033569336;
+		};
+		class Item89
+		{
+			dataType="Marker";
+			position[]={9640.1182,241.24944,11458.809};
+			name="marker_20";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=862;
+			atlOffset=0.00033569336;
+		};
+		class Item90
+		{
+			dataType="Marker";
+			position[]={11457.351,317.30142,11333.793};
+			name="marker_21";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=863;
+			atlOffset=0.00033569336;
+		};
+		class Item91
+		{
+			dataType="Marker";
+			position[]={9647.8467,85.63266,13525.273};
+			name="marker_22";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=864;
+			atlOffset=0.00033569336;
+		};
+		class Item92
+		{
+			dataType="Marker";
+			position[]={8968.7236,290.116,8021.0078};
+			name="marker_23";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=865;
+			atlOffset=0.00033569336;
+		};
+		class Item93
+		{
+			dataType="Marker";
+			position[]={8917.9785,290.05032,7974.542};
+			name="marker_24";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=867;
+			atlOffset=0.00033569336;
+		};
+		class Item94
+		{
+			dataType="Marker";
+			position[]={3586.603,6.5394201,2169.502};
+			name="marker_25";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=868;
+			atlOffset=0.00033569336;
+		};
+		class Item95
+		{
+			dataType="Marker";
+			position[]={2715.9155,-3.2706482,2095.9434};
+			name="marker_26";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=869;
+			atlOffset=0.00033569336;
+		};
+		class Item96
+		{
+			dataType="Marker";
+			position[]={2583.5872,194.08713,5070.668};
+			name="marker_27";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=870;
+			atlOffset=0.00033569336;
+		};
+		class Item97
+		{
+			dataType="Marker";
+			position[]={3704.4785,402.07034,5982.7119};
+			name="marker_28";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=871;
+			atlOffset=0.00033569336;
+		};
+		class Item98
+		{
+			dataType="Marker";
+			position[]={3136.5356,299.02032,7957.7744};
+			name="marker_29";
+			type="mil_start";
+			colorName="ColorGreen";
+			id=872;
+			atlOffset=0.00033569336;
+		};
+		class Item99
+		{
+			dataType="Marker";
+			position[]={13257.554,7.96,6081.5532};
+			name="marker_30";
+			type="mil_start";
+			colorName="ColorRed";
+			id=873;
+		};
+		class Item100
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1615.9969,0.37351236,1075.053};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=875;
+			type="Sign_Arrow_Green_F";
+			atlOffset=94.545006;
 		};
 	};
 	class Connections

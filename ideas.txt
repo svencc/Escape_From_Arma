@@ -595,3 +595,110 @@ private _act_greet2 = [
     5
 ] call ace_interact_menu_fnc_createAction;
 [this, 0, ["commy_HowAreYou"], _act_greet2] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
+
+
+
+
+
+#TERRAIN DETECTOR:
+  "Sign_Arrow_Green_F"
+
+#V1
+"TERRAIN DETECTOR:";
+private _terrainObjects = nearestTerrainObjects [[worldSize / 2, worldSize /2, 0], [], worldsize / 2]; 
+{
+  private _model = _x;
+   "Sign_Arrow_Green_F" createVehicle position _model;
+} forEach _terrainObjects;
+
+systemchat str count _terrainObjects;
+
+#V2
+"TERRAIN DETECTOR:";
+private _terrainObjects = nearestTerrainObjects [[worldSize / 2, worldSize /2, 0], [], 500]; 
+{
+  private _model = _x;
+   "Sign_Arrow_Green_F" createVehicle position _model;
+} forEach _terrainObjects;
+
+
+
+#ALLES VERSTECKEN:
+private _terrainObjects = nearestTerrainObjects [getPos player, [], 500, false];  
+{ 
+  _x allowDamage false; 
+ hideObjectGlobal _x; 
+} forEach _terrainObjects;
+
+
+private _terrainObjects = nearestTerrainObjects [getPos player, [], 500, false];  
+{ 
+  private _model = _x;
+  "Sign_Arrow_Green_F" createVehicle position _model;
+} forEach _terrainObjects;
+
+
+private _terrainObjects = nearestTerrainObjects [getPos player, _lootableObjects, 100, false];  
+{ 
+  private _model = _x;
+  "Sign_Arrow_Green_F" createVehicle position _model;
+  _model hideObjectGlobal true;
+} forEach _terrainObjects;
+
+private _lootableObjects = [
+  // Ofen
+  "kitchenstove_elec.p3d",
+  
+  // Kühlschrank
+  "fridge.p3d",
+
+  // Schreibtisch
+  "conference_table_a.p3d",
+
+  // Küchentisch
+  "stul_kuch1.p3d",
+
+  // Schrank
+  "case_a.p3d",
+  "case_wall_unit_part_c.p3d",
+  "skrin_bar.p3d",
+  "b_str_fikovnik_red.p3d",
+
+  // Kamin
+  "kamin_07.p3d",
+  "pech_02.p3d",
+
+  // Sessel
+  "armchair.p3d",
+
+  // Bett
+  "postel_manz_kov.p3d",
+
+  // postbox
+  "misc_postbox.p3d",
+
+  // Mülleimer
+  "garbagebin_03_f.p3d"
+
+  // Müllhaufen
+  "garbagebags_f.p3d",
+  "garbagepallet_f.p3d",
+  "junkpile_f.p3d",
+
+];
+
+
+#HELPER
+private _cursorObject = cursorObject;
+private _model = getModelInfo _cursorObject;
+private _modelText = str (_model select 0);
+private _objectType = typeOf _cursorObject;
+private _out = format ["%1, // %2", _modelText, (str _objectType)];
+systemChat _out;
+copyToClipboard _out;
+
+false
