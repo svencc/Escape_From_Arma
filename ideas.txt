@@ -656,8 +656,15 @@ private _lootableObjects = [
   // Kühlschrank
   "fridge.p3d",
 
+  // Waschmachine
+  "washing_machine.p3d", // ""
+
   // Schreibtisch
   "conference_table_a.p3d",
+  "office_table_a.p3d", // ""
+  "table_drawer.p3d", // ""
+  "tabledesk_f.p3d", // ""
+  
 
   // Küchentisch
   "stul_kuch1.p3d",
@@ -667,10 +674,23 @@ private _lootableObjects = [
   "case_wall_unit_part_c.p3d",
   "skrin_bar.p3d",
   "b_str_fikovnik_red.p3d",
+  "library_a.p3d", // ""
+  "case_wall_unit_part_d.p3d", // ""
+  "case_cans_b.p3d", // ""
+
+  // Metallschrank
+  "metalcase_01.p3d", // ""
+  "metalcase_02.p3d", // ""
+
+  // Regal
+  "case_d.p3d", // ""
 
   // Kamin
+  "kamin_01.p3d", // ""
   "kamin_07.p3d",
   "pech_02.p3d",
+  "kamin_03.p3d", // ""
+  "kamin_02.p3d", // ""
 
   // Sessel
   "armchair.p3d",
@@ -683,11 +703,83 @@ private _lootableObjects = [
 
   // Mülleimer
   "garbagebin_03_f.p3d"
+  "misc_gcontainer_big.p3d", // "Land_Misc_GContainer_Big"
 
   // Müllhaufen
   "garbagebags_f.p3d",
   "garbagepallet_f.p3d",
   "junkpile_f.p3d",
+  "garbage_paleta.p3d", // ""
+  "garbageheap_04_f.p3d",
+  "garbageheap_03_f.p3d", // ""
+  "barricade_01_4m_f.p3d", // ""
+
+
+  // Autowrack
+  "skodovka_wrecked.p3d", // ""
+  "chz_kamaz_pricep.p3d", // "Land_chz_kamaz_pricep"
+  "lada_lm_1.p3d", // "Land_Lada_LM_1"
+  "lada.p3d", // ""
+  "datsun1_civil_1_open_1.p3d", // ""
+  "datsun1_civil_3_open_1.p3d", // ""
+  "hiluxt.p3d", // ""
+  "hilux1_civil_3_open.p3d", // ""
+  
+  "skodovka_blue.p3d", // "Land_Skodovka_blue"
+  "ikarus_1.p3d", // ""
+  "chz_zaz968_2.p3d", // "Land_chz_zaz968_2"
+  "lada_1.p3d", // ""
+  "car_hatchback.p3d", // "Land_car_hatchback"
+  "chz_kamaz_korpus2.p3d", // "Land_chz_kamaz_korpus2"
+  "misc_gcontainer_big.p3d", // "Land_Misc_GContainer_Big"
+  "chz_avtobus2.p3d", // "Land_chz_avtobus2"
+  "car_sedan_1.p3d", // "Land_car_sedan_1"
+  "b_corylus.p3d", // ""
+  "volha_1.p3d", // ""
+  "skodovka_blue.p3d", // "Land_Skodovka_blue"
+  "s1203_2.p3d", // ""
+  "chz_zil_130_4.p3d", // "Land_chz_zil_130_4"
+  "chz_molokovoz_01.p3d", // "Land_chz_molokovoz_01"
+  "chz_kamaz_korpus2.p3d", // "Land_chz_kamaz_korpus2"
+  "wreck_truck_f.p3d", // ""
+  "wreck_ural_f.p3d", // ""
+  "chz_uazik_01.p3d", // "Land_chz_uazik_01"
+  "chz_uazik_02.p3d", // "Land_chz_uazik_02"
+  "chz_benzovoz_zil.p3d", // "Land_chz_benzovoz_zil"
+  "chz_benzovoz_gaz.p3d", // "Land_chz_benzovoz_gaz"
+  "datsun01t.p3d", // ""
+  "wreck_truck_dropside_f.p3d", // ""
+  "chz_zil_fire_1.p3d", // "Land_chz_zil_fire_1"
+
+
+  // Brunnen
+  "pumpa.p3d", // "Land_pumpa"
+  "pumpa.p3d", // "Land_pumpa"
+  "stonewell_01_f.p3d", // "Land_StoneWell_01_F"
+  "watertank_04_f.p3d", // ""
+
+  // WErkmaschine
+  "soustruh_proxy.p3d", // ""
+
+  // Kisten
+  "cratesshabby_f.p3d", // ""
+  "crateswooden_f.p3d", // ""
+
+  // Waffenkisten
+  "hromada_beden_dekorativnix.p3d", // ""
+  "cargonet_01_ammo_f.p3d", // ""
+
+  // Gepäck
+  "luggageheap_01_f.p3d", // ""
+  "luggageheap_02_f.p3d", // ""
+  "misc_backpackheap.p3d", // ""
+
+  // Zelt
+  "dome_tent_grn.p3d", // ""
+  "dome_tent_brn.p3d", // ""
+  "tenta_f.p3d", // ""
+  "dome_tent_oli.p3d", // ""
+
 
 ];
 
@@ -702,3 +794,209 @@ systemChat _out;
 copyToClipboard _out;
 
 false
+
+
+
+
+#SPAWN SKRIPT
+#V1:
+private _lootableObjects = [
+  "kitchenstove_elec.p3d",
+  "fridge.p3d",
+  "washing_machine.p3d", 
+
+  "conference_table_a.p3d",
+  "office_table_a.p3d",
+  "table_drawer.p3d",
+  "tabledesk_f.p3d",
+
+  "case_a.p3d",
+  "case_wall_unit_part_c.p3d",
+  "skrin_bar.p3d",
+  "b_str_fikovnik_red.p3d",
+  "library_a.p3d",
+  "case_wall_unit_part_d.p3d",
+  "case_cans_b.p3d",
+
+  "metalcase_01.p3d",
+  "metalcase_02.p3d",
+
+  "garbagebin_03_f.p3d"
+  "misc_gcontainer_big.p3d",
+  "garbagebags_f.p3d",
+  "garbagepallet_f.p3d",
+  "junkpile_f.p3d",
+  "garbage_paleta.p3d",
+  "garbageheap_04_f.p3d",
+  "garbageheap_03_f.p3d",
+  "barricade_01_4m_f.p3d",
+
+  "skodovka_wrecked.p3d",
+  "skodovka_blue.p3d",
+  "chz_kamaz_pricep.p3d",
+  "lada_lm_1.p3d",
+  "lada_1.p3d",
+  "lada.p3d",
+  "car_sedan_1.p3d",
+  "datsun01t.p3d",
+  "datsun1_civil_1_open_1.p3d",
+  "datsun1_civil_3_open_1.p3d",
+  "hiluxt.p3d",
+  "hilux1_civil_3_open.p3d",
+  "ikarus_1.p3d",
+  "chz_zaz968_2.p3d",
+  "car_hatchback.p3d",
+  "chz_kamaz_korpus2.p3d",
+  "chz_avtobus2.p3d",
+  "b_corylus.p3d",
+  "volha_1.p3d",
+  "skodovka_blue.p3d",
+  "s1203_2.p3d",
+  "chz_zil_130_4.p3d",
+  "chz_zil_fire_1.p3d",
+  "chz_molokovoz_01.p3d",
+  "chz_kamaz_korpus2.p3d",
+  "chz_uazik_01.p3d",
+  "chz_uazik_02.p3d",
+  "chz_benzovoz_zil.p3d",
+  "chz_benzovoz_gaz.p3d",
+  "wreck_ural_f.p3d",
+  "wreck_truck_f.p3d",
+  "wreck_truck_dropside_f.p3d",
+
+  "cratesshabby_f.p3d",
+  "crateswooden_f.p3d",
+
+  "hromada_beden_dekorativnix.p3d",
+  "cargonet_01_ammo_f.p3d",
+
+  "luggageheap_01_f.p3d",
+  "luggageheap_02_f.p3d",
+  "misc_backpackheap.p3d",
+
+  "dome_tent_grn.p3d",
+  "dome_tent_brn.p3d",
+  "tenta_f.p3d",
+  "dome_tent_oli.p3d"
+];
+
+private _terrainObjects = nearestTerrainObjects [getPos player, [], 1, false];  
+{ 
+  private _model = _x;
+  systemChat format["%1", _model];
+  "Sign_Arrow_Green_F" createVehicle position _model;
+  //_model hideObjectGlobal true;
+
+} forEach _terrainObjects;
+
+
+
+
+https://forums.bohemia.net/forums/topic/207677-adding-a-inventory-to-any-item/
+
+
+I think you just use an existing box and open it remotely  using an action placed in the fake box so first place a real box and make it invisible and name it ammobox1
+then place the object you want to add an inventory to and add this code to the init
+
+ 
+
+this addaction ["Open _Inv",
+{
+  ammobox1 setpos position (_this select 1);
+  (_this select 1) action ["Gear", ammobox1];
+},[], 6, true, true, "", "(_this distance _target)<1"];
+
+You could probably just spawn a weaponholder but I find it easier just to place a real box and use that.
+
+
+private _invAction = [
+  "lootAction",
+  "<t color='#FFFF00'>loot ...</t>",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\upload_ca.paa",
+  {
+    params ["_target", "_player", "_args"];
+
+    systemChat format["%1",_args];
+    private _inventarItem = _args select 0;
+    _inventarItem setpos position _target;
+    _target action ["Gear", _inventarItem];
+  },
+  {true},
+  {},
+  ammobox1,
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[this, 0, [], _invAction] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
+private _lootAction = [
+  "lootAction",
+  "<t color='#00FF00'>loot ...</t>",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\download_ca.paa",
+  {
+    params ["_target", "_player", "_args"];
+    private _inventory = _args select 0;
+    _inventory setpos position _target;
+    _player action ["Gear", _inventory];
+    
+  },
+  {true},
+  {},
+  [ammobox1],
+  nil,
+  2
+] call ace_interact_menu_fnc_createAction;
+[this, 0, [], _lootAction] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+_helper = "GroundWeaponHolder_Scripted" createVehicleLocal [0,0,0];
+_helper attachTo [this,[0,0,0]];
+
+private _lootAction = [ 
+  "lootAction", 
+  "<t color='#FF0000'>loot ...</t>",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa",
+  { 
+    params ["_target", "_player", "_args"]; 
+    private _inventory = _args select 0; 
+    _inventory setpos position _target; 
+    _player action ["Gear", _inventory]; 
+     
+  }, 
+  {true}, 
+  {}, 
+  [ammobox1], 
+  nil, 
+  20 
+] call ace_interact_menu_fnc_createAction; 
+[_helper, 0, [], _lootAction] call ace_interact_menu_fnc_addActionToObject;
+
+
+----->
+Mit ammobox1
+ 
+_helper = "GroundWeaponHolder_Scripted" createVehicleLocal [0,0,0]; 
+_helper attachTo [this,[0,0,0]]; 
+ 
+private _lootAction = [  
+  "lootAction",  
+  "<t color='#FF0000'>loot ...</t>", 
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa", 
+  {  
+    params ["_target", "_player", "_args"];  
+    private _inventory = _args select 0;  
+    _inventory setpos position _target;  
+    _player action ["Gear", _inventory];  
+      
+  },  
+  {true},  
+  {},  
+  [ammobox1],  
+  nil,  
+  20  
+] call ace_interact_menu_fnc_createAction;  
+[_helper, 0, [], _lootAction] call ace_interact_menu_fnc_addActionToObject;
