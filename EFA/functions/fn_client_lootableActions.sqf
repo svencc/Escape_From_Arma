@@ -12,15 +12,23 @@ x        action open gear
         move to player
         action open gear
 */
+/*private _lootableObjects = nearestTerrainObjects  [
+  [worldSize / 2, worldSize / 2],
+  [],
+  worldSize * sqrt 2 / 2,
+  false
+];*/
 private _lootableObjects = nearestTerrainObjects  [getPos player, [], 500, false];
-systemChat str count _lootableObjects;
+private _preparedObjects = 0;
+systemChat format["Terrain Objects: %1", count _lootableObjects];
 {
   private _terrainObject = _x;
   private _modelInfo = getModelInfo _terrainObject;
   private _modelName = _modelInfo select 0;
   if(_modelName in EFA_lootableObjects) then {
+    _preparedObjects = _preparedObjects + 1;
     private _modelPos = getPos _terrainObject;
-    private _heightOffsetHelper = -0.6;
+    private _heightOffsetHelper = 0;
 
     private _helper = "GroundWeaponHolder_Scripted" createVehicle [0,0,0];
     _helper enableSimulationGlobal false;
@@ -41,8 +49,10 @@ systemChat str count _lootableObjects;
       {},
       [_helper],
       nil,
-      20
+      5
     ] call ace_interact_menu_fnc_createAction;
     [_helper, 0, [], _lootAction] call ace_interact_menu_fnc_addActionToObject;
   };
 } forEach _lootableObjects;
+
+systemChat format["Prepared Objects: %1", _preparedObjects];

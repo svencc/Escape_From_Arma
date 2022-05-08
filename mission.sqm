@@ -12,22 +12,22 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=890;
+		nextID=891;
 	};
 	class MarkerIDProvider
 	{
-		nextID=19;
+		nextID=32;
 	};
 	class LayerIndexProvider
 	{
-		nextID=543;
+		nextID=562;
 	};
 	class Camera
 	{
-		pos[]={13084.863,43.90152,10763.132};
-		dir[]={-0.92553449,-0.37126762,0.074490443};
-		up[]={-0.37007135,0.92852575,0.029784705};
-		aside[]={0.080224469,-6.2718755e-009,0.99677801};
+		pos[]={9784.8516,293.91376,8819.3291};
+		dir[]={-0.91506225,-0.3970544,-0.070773363};
+		up[]={-0.39587215,0.91779512,-0.030617813};
+		aside[]={-0.077112392,1.8626451e-009,0.99702251};
 	};
 };
 binarizationWanted=0;
@@ -7040,7 +7040,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=102;
+		items=103;
 		class Item0
 		{
 			dataType="Logic";
@@ -27444,6 +27444,19 @@ class Mission
 			};
 			id=886;
 			type="Land_Camping_Light_off_F";
+		};
+		class Item102
+		{
+			dataType="Marker";
+			position[]={9784.1777,297.95901,8820.9092};
+			name="marker_31";
+			markerType="ELLIPSE";
+			type="";
+			colorName="ColorGreen";
+			a=11.539;
+			b=11.539;
+			id=890;
+			atlOffset=2.6262207;
 		};
 	};
 	class Connections

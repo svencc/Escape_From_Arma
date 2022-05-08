@@ -22,6 +22,7 @@ EFA_lootableObjects = [
   "metalcase_01.p3d",
   "metalcase_02.p3d",
 
+  // garbage
   "garbagebin_03_f.p3d",
   "misc_gcontainer_big.p3d",
   "garbagebags_f.p3d",
@@ -32,6 +33,7 @@ EFA_lootableObjects = [
   "garbageheap_03_f.p3d",
   "barricade_01_4m_f.p3d",
 
+  // car wrack
   "skodovka_wrecked.p3d",
   "skodovka_blue.p3d",
   "chz_kamaz_pricep.p3d",
@@ -65,16 +67,25 @@ EFA_lootableObjects = [
   "wreck_truck_f.p3d",
   "wreck_truck_dropside_f.p3d",
 
+  // crates
   "cratesshabby_f.p3d",
   "crateswooden_f.p3d",
+  "woodencrate_01_stack_x5_f.p3d",
+  "drevena_bedna.p3d",
+
+  // cargo
+  "misc_cargo_cont_net1.p3d",
+  "misc_cargo_cont_net2.p3d",
 
   "hromada_beden_dekorativnix.p3d",
   "cargonet_01_ammo_f.p3d",
 
+  // loggage
   "luggageheap_01_f.p3d",
   "luggageheap_02_f.p3d",
   "misc_backpackheap.p3d",
 
+  // tents
   "dome_tent_grn.p3d",
   "dome_tent_brn.p3d",
   "tenta_f.p3d",
