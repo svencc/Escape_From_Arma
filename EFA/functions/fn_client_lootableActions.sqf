@@ -18,7 +18,7 @@ x        action open gear
   worldSize * sqrt 2 / 2,
   false
 ];*/
-private _lootableObjects = nearestTerrainObjects  [getPos player, [], 5, false];
+private _lootableObjects = nearestTerrainObjects  [getPos player, [], 1000, false];
 private _preparedObjects = 0;
 systemChat format["Terrain Objects: %1", count _lootableObjects];
 {
@@ -28,16 +28,11 @@ systemChat format["Terrain Objects: %1", count _lootableObjects];
   private _modelPos = _modelInfo select 3;
   private _modelWorldPos = getPos _terrainObject;
 
-systemChat format["%1",_modelPos];
-
-    if(_modelName in EFA_lootableObjects) then {
+  if(_modelName in EFA_lootableObjects) then {
     _preparedObjects = _preparedObjects + 1;
     private _heightOffsetHelper = 0;
 
-    private _helper = "Land_VR_Shape_01_cube_1m_F" createVehicle [0,0,0];
-    "Land_VR_Shape_01_cube_1m_F";
-    "GroundWeaponHolder_Scripted";
-    
+    private _helper = "GroundWeaponHolder_Scripted" createVehicle [0,0,0];
     _helper enableSimulationGlobal false;
 
     private _helperBoundingBox = boundingBoxReal _helper;
@@ -54,7 +49,7 @@ systemChat format["%1",_modelPos];
     _helper setPos [
       (_modelPos select 0) + (_modelWorldPos select 0), 
       (_modelPos select 1) + (_modelWorldPos select 1),
-      (_modelPos select 2) + ((_modelWorldPos select 2) + _modelHeight - (_helperHeight))
+      (_modelPos select 2) + (_modelWorldPos select 2) + (_modelHeight - (_helperHeight))
     ];
     systemChat format["_modelPos %1", _modelPos];
     systemChat format["_modelWorldPos %1", _modelWorldPos];
@@ -84,12 +79,3 @@ systemChat format["%1",_modelPos];
 } forEach _lootableObjects;
 
 systemChat format["Prepared Objects: %1", _preparedObjects];
-
-
-
-
-
-
-
-
-(_modelPos select 2) + ((_modelWorldPos select 2) + _modelHeight - (_helperHeight/2))

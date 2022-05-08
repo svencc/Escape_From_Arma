@@ -2,10 +2,12 @@ systemChat "EFA_lootableObjects loaded";
 EFA_lootableObjects = [
   "waterbottle_01_pack_f.p3d",
 
+  // household
   "kitchenstove_elec.p3d",
   "fridge.p3d",
   "washing_machine.p3d", 
 
+  // tables
   "conference_table_a.p3d",
   "office_table_a.p3d",
   "table_drawer.p3d",
@@ -14,11 +16,11 @@ EFA_lootableObjects = [
   "case_a.p3d",
   "case_wall_unit_part_c.p3d",
   "skrin_bar.p3d",
-  "b_str_fikovnik_red.p3d",
   "library_a.p3d",
   "case_wall_unit_part_d.p3d",
   "case_cans_b.p3d",
 
+  // cases
   "metalcase_01.p3d",
   "metalcase_02.p3d",
 
@@ -33,8 +35,8 @@ EFA_lootableObjects = [
   "garbageheap_03_f.p3d",
   "barricade_01_4m_f.p3d",
   "garbagecontainer_open_f.p3d",
+  "garbagecontainer_closed_f.p3d",
   
-
   // barrel
   "garbagebarrel_01_english_f.p3d",
   "metalbarrel_f.p3d",
@@ -49,7 +51,6 @@ EFA_lootableObjects = [
   // workbench
   "workbench_01_f.p3d",
   "metalcrate_02.p3d",
-
 
   // car wrack
   "skodovka_wrecked.p3d",
@@ -71,14 +72,11 @@ EFA_lootableObjects = [
   "car_hatchback.p3d",
   "chz_kamaz_korpus2.p3d",
   "chz_avtobus2.p3d",
-  "b_corylus.p3d",
   "volha_1.p3d",
-  "skodovka_blue.p3d",
   "s1203_2.p3d",
   "chz_zil_130_4.p3d",
   "chz_zil_fire_1.p3d",
   "chz_molokovoz_01.p3d",
-  "chz_kamaz_korpus2.p3d",
   "chz_uazik_01.p3d",
   "chz_uazik_02.p3d",
   "chz_benzovoz_zil.p3d",
@@ -86,10 +84,20 @@ EFA_lootableObjects = [
   "wreck_ural_f.p3d",
   "wreck_truck_f.p3d",
   "wreck_truck_dropside_f.p3d",
-
+  "wreck_van_f.p3d",
+  "chz_kamaz_korpus.p3d", // "Land_chz_kamaz_korpus"
+  "wreck_offroad_f.p3d", // ""
+  "chz_uaz_1.p3d", // "Land_chz_uaz_1"  
+  "chz_gazon.p3d", // "Land_chz_gazon"
+  "chz_zilok_3.p3d", // "Land_chz_zilok_3"
+  "chz_zilok_2.p3d", // "Land_chz_zilok_2"
+  "chz_kamaz_fura.p3d", // "Land_chz_kamaz_fura"
+    
+ 
   // crates
   "cratesshabby_f.p3d",
   "crateswooden_f.p3d",
+  "woodencrate_01_f.p3d", // ""
   "woodencrate_01_stack_x5_f.p3d",
   "woodencrate_01_stack_x3_f.p3d", // ""
   "drevena_bedna.p3d",

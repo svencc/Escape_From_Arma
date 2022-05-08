@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=895;
+		nextID=897;
 	};
 	class MarkerIDProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9752.9482,300.68872,8803.2764};
-		dir[]={-0.880193,-0.40367964,-0.24960585};
-		up[]={-0.38836572,0.91490036,-0.11013307};
-		aside[]={-0.27282298,0,0.96206427};
+		pos[]={9746.3613,294.5766,8802.6016};
+		dir[]={-0.88019317,-0.40367937,-0.24960567};
+		up[]={-0.38836551,0.91490048,-0.11013291};
+		aside[]={-0.27282274,7.4505806e-009,0.96206427};
 	};
 };
 binarizationWanted=0;
@@ -118,13 +118,14 @@ addons[]=
 	"A3_Structures_F_Civ_Camping",
 	"ace_interaction",
 	"A3_Structures_F_EPB_Items_Luggage",
-	"A3_Structures_F_Mark_VR_Shapes"
+	"A3_Structures_F_Mark_VR_Shapes",
+	"A3_Props_F_Orange_Humanitarian_Supplies"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=70;
+		items=71;
 		class Item0
 		{
 			className="ravage";
@@ -595,6 +596,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Mark";
 			name="Arma 3 Marksmen - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item70
+		{
+			className="A3_Props_F_Orange";
+			name="Arma 3 Orange - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -7050,7 +7058,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=105;
+		items=107;
 		class Item0
 		{
 			dataType="Logic";
@@ -27522,6 +27530,38 @@ class Mission
 			id=894;
 			type="Land_VR_Shape_01_cube_1m_F";
 			atlOffset=-3.0517578e-005;
+		};
+		class Item105
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9742.2588,291.80597,8801.4443};
+				angles[]={6.2731848,0,6.2631927};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=895;
+			type="Land_PlasticCase_01_small_idap_F";
+		};
+		class Item106
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9743.0029,291.78015,8802.2979};
+				angles[]={0.0050033992,0,6.2481956};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=896;
+			type="Land_PlasticCase_01_small_gray_F";
 		};
 	};
 	class Connections
