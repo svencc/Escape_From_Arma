@@ -60,6 +60,7 @@ EFA_lootableObjects = [
   "lada.p3d",
   "car_sedan_1.p3d",
   "datsun01t.p3d",
+  "datsun3_civil_1.p3d",
   "datsun1_civil_1_open_1.p3d",
   "datsun1_civil_3_open.p3d",
   "datsun1_civil_3_open_1.p3d",

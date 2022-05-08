@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=893;
+		nextID=895;
 	};
 	class MarkerIDProvider
 	{
@@ -24,10 +24,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9778.1045,291.9903,8804.1025};
-		dir[]={-0.9375633,-0.093245804,0.33508253};
-		up[]={-0.087806404,0.99564314,0.031381767};
-		aside[]={0.33654886,-1.8626451e-009,0.94166607};
+		pos[]={9752.9482,300.68872,8803.2764};
+		dir[]={-0.880193,-0.40367964,-0.24960585};
+		up[]={-0.38836572,0.91490036,-0.11013307};
+		aside[]={-0.27282298,0,0.96206427};
 	};
 };
 binarizationWanted=0;
@@ -116,13 +116,15 @@ addons[]=
 	"ace_dragging",
 	"A3_Misc_F_Helpers",
 	"A3_Structures_F_Civ_Camping",
-	"ace_interaction"
+	"ace_interaction",
+	"A3_Structures_F_EPB_Items_Luggage",
+	"A3_Structures_F_Mark_VR_Shapes"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=69;
+		items=70;
 		class Item0
 		{
 			className="ravage";
@@ -589,6 +591,13 @@ class AddonsMetaData
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
+		class Item69
+		{
+			className="A3_Structures_F_Mark";
+			name="Arma 3 Marksmen - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -601,7 +610,8 @@ dlcs[]=
 	"Heli",
 	"RHS_GREF",
 	"Expansion",
-	"RHS_SAF"
+	"RHS_SAF",
+	"Mark"
 };
 randomSeed=5606084;
 class ScenarioData
@@ -7040,7 +7050,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=103;
+		items=105;
 		class Item0
 		{
 			dataType="Logic";
@@ -27457,6 +27467,61 @@ class Mission
 			b=11.539;
 			id=890;
 			atlOffset=2.6262207;
+		};
+		class Item103
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9737.0889,295.75403,8800.3311};
+			};
+			side="Empty";
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=893;
+			type="Land_LuggageHeap_01_F";
+			atlOffset=3.4810181;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item104
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9738.7295,292.21585,8799.1748};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=894;
+			type="Land_VR_Shape_01_cube_1m_F";
+			atlOffset=-3.0517578e-005;
 		};
 	};
 	class Connections
