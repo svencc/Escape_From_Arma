@@ -26,12 +26,30 @@ EFA_lootableObjects = [
   "garbagebin_03_f.p3d",
   "misc_gcontainer_big.p3d",
   "garbagebags_f.p3d",
-  "garbagepallet_f.p3d",
+  //"garbagepallet_f.p3d",
   "junkpile_f.p3d",
   "garbage_paleta.p3d",
   "garbageheap_04_f.p3d",
   "garbageheap_03_f.p3d",
   "barricade_01_4m_f.p3d",
+  "garbagecontainer_open_f.p3d",
+  
+
+  // barrel
+  "garbagebarrel_01_english_f.p3d",
+  "metalbarrel_f.p3d",
+
+  // canister
+  "canisterfuel_f.p3d",
+
+  // tools wagon
+  "tooltrolley_02_f.p3d",
+  "tooltrolley_01_f.p3d",
+
+  // workbench
+  "workbench_01_f.p3d",
+  "metalcrate_02.p3d",
+
 
   // car wrack
   "skodovka_wrecked.p3d",
@@ -43,6 +61,7 @@ EFA_lootableObjects = [
   "car_sedan_1.p3d",
   "datsun01t.p3d",
   "datsun1_civil_1_open_1.p3d",
+  "datsun1_civil_3_open.p3d",
   "datsun1_civil_3_open_1.p3d",
   "hiluxt.p3d",
   "hilux1_civil_3_open.p3d",
@@ -71,6 +90,7 @@ EFA_lootableObjects = [
   "cratesshabby_f.p3d",
   "crateswooden_f.p3d",
   "woodencrate_01_stack_x5_f.p3d",
+  "woodencrate_01_stack_x3_f.p3d", // ""
   "drevena_bedna.p3d",
 
   // cargo
@@ -83,6 +103,7 @@ EFA_lootableObjects = [
   // loggage
   "luggageheap_01_f.p3d",
   "luggageheap_02_f.p3d",
+  "luggageheap_03_f.p3d",
   "misc_backpackheap.p3d",
 
   // tents

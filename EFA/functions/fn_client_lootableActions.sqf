@@ -32,8 +32,13 @@ systemChat format["Terrain Objects: %1", count _lootableObjects];
 
     private _helper = "GroundWeaponHolder_Scripted" createVehicle [0,0,0];
     _helper enableSimulationGlobal false;
-    _helper setPos [_modelPos select 0, _modelPos select 1, (_modelPos select 2)+_heightOffsetHelper];
-    _helper attachTo [_terrainObject, [0,0,0]];
+    private _modelCenter = boundingCenter _terrainObject;
+    private _modelBoundingBox = boundingBoxReal _terrainObject;
+    private _p1 = _modelBoundingBox select 0;
+    private _p2 = _modelBoundingBox select 1;
+    private _modelHeight = abs ((_p2 select 2) - (_p1 select 2));
+    _helper setPos [_modelPos select 0, _modelPos select 1, (_modelHeight/2)];
+    "_helper attachTo [_terrainObject, [0,0,0]]";
     [_helper, _helper] call ace_common_fnc_claim;
   
     private _lootAction = [
@@ -49,7 +54,7 @@ systemChat format["Terrain Objects: %1", count _lootableObjects];
       {},
       [_helper],
       nil,
-      5
+      10
     ] call ace_interact_menu_fnc_createAction;
     [_helper, 0, [], _lootAction] call ace_interact_menu_fnc_addActionToObject;
   };
