@@ -1,1 +1,2 @@
-EFA_fnc_transfer_cargo = compile preprocessFileLineNumbers ("EFA\functions\fn_transfer_cargo.sqf");
+[] call compile preprocessFileLineNumbers ("EFA\config\init.sqf");
+[] call compile preprocessFileLineNumbers ("EFA\functions\init.sqf");

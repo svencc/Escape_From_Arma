@@ -800,7 +800,7 @@ false
 
 #SPAWN SKRIPT
 #V1:
-private _lootableObjects = [
+private _EFA_lootableObjects = [
   "kitchenstove_elec.p3d",
   "fridge.p3d",
   "washing_machine.p3d", 
@@ -1000,3 +1000,20 @@ private _lootAction = [
   20  
 ] call ace_interact_menu_fnc_createAction;  
 [_helper, 0, [], _lootAction] call ace_interact_menu_fnc_addActionToObject;
+
+
+skript über alle lootbaren MODELS
+  jedes MODEL bekommt einen GroundWeaponHolder (erstellen vorher)
+  der GroundWeaponHolder wird attached zu 0,0,0
+  GroundWeaponHolder bekommt ace action
+    ace action LOOT:
+    action prüft: ist ein container da?
+      wenn ja container öffnen
+        move to player
+        action open gear
+      wenn nein container erstellen; inhalt generieren; container öffnen
+        move to player
+        action open gear
+
+
+
