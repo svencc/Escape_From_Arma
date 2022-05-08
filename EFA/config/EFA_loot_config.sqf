@@ -1,1 +1,1 @@
-systemChat "EFA_loot_config";
+systemChat "EFA_loot_config loaded";
