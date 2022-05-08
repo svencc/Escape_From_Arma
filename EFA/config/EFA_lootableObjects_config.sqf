@@ -1,4 +1,6 @@
 EFA_lootableObjects = [
+  "waterbottle_01_pack_f.p3d",
+
   "kitchenstove_elec.p3d",
   "fridge.p3d",
   "washing_machine.p3d", 
