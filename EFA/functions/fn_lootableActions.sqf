@@ -18,7 +18,7 @@ x        action open gear
   worldSize * sqrt 2 / 2,
   false
 ];*/
-private _lootableObjects = nearestTerrainObjects  [getPos player, [], 1000, false];
+private _lootableObjects = nearestTerrainObjects  [getPos player, [], 2000, false];
 private _preparedObjects = 0;
 systemChat format["Terrain Objects: %1", count _lootableObjects];
 {
