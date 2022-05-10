@@ -1,35 +1,32 @@
-/*
-x skript über alle lootbaren MODELS
-x  jedes MODEL bekommt einen GroundWeaponHolder (erstellen vorher)
-x  der GroundWeaponHolder wird attached zu 0,0,0
-x  GroundWeaponHolder bekommt ace action
-x    ace action LOOT:
-x    action prüft: ist ein container da?
-x      wenn ja container öffnen
-x        move to player
-x        action open gear
-      wenn nein container erstellen; inhalt generieren; container öffnen
-        move to player
-        action open gear
-*/
-/*private _lootableObjects = nearestTerrainObjects  [
-  [worldSize / 2, worldSize / 2],
-  [],
-  worldSize * sqrt 2 / 2,
+params["_xDimension", "_yDimension"];
+
+private _lootableObjects = nearestTerrainObjects  [
+  [_xDimension + EFA_cacheManager_gridHalfSize, _yDimension + EFA_cacheManager_gridHalfSize, 0], 
+  [], 
+  EFA_cacheManager_gridDiagonalLength, 
   false
-];*/
-private _lootableObjects = nearestTerrainObjects  [getPos player, [], 2000, false];
-private _preparedObjects = 0;
-systemChat format["Terrain Objects: %1", count _lootableObjects];
+];
+private _preparedObjects = 0; // DEBUG
+systemChat format["Terrain Objects: %1", count _lootableObjects]; // DEBUG
+systemChat str EFA_lootableObjects;
 {
   private _terrainObject = _x;
   private _modelInfo = getModelInfo _terrainObject;
   private _modelName = _modelInfo select 0;
   private _modelPos = _modelInfo select 3;
   private _modelWorldPos = getPos _terrainObject;
+  private _modelInArea = _modelPos inArea [
+    [_xDimension, _yDimension],
+    EFA_cacheManager_gridHalfSize,
+    EFA_cacheManager_gridHalfSize,
+    0,
+    true
+  ];
 
-  if(_modelName in EFA_lootableObjects) then {
-    _preparedObjects = _preparedObjects + 1;
+  _modelInArea = true;
+
+  if( _modelInArea && (_modelName in EFA_lootableObjects) ) then {
+    _preparedObjects = _preparedObjects + 1; // DEBUG
     private _heightOffsetHelper = 0;
 
     private _helper = "GroundWeaponHolder_Scripted" createVehicle [0,0,0];
@@ -65,8 +62,8 @@ systemChat format["Terrain Objects: %1", count _lootableObjects];
       "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa",
       {
         params ["_target", "_player", "_args"];
-        "private _inventory = _args select 0";
-        _player action ["Gear", _helper];
+        private _inventory = _args select 0;
+        _player action ["Gear", _inventory];
       },
       {true},
       {},
@@ -78,4 +75,4 @@ systemChat format["Terrain Objects: %1", count _lootableObjects];
   };
 } forEach _lootableObjects;
 
-systemChat format["Prepared Objects: %1", _preparedObjects];
+systemChat format["Prepared Objects: %1", _preparedObjects]; // DEBUG

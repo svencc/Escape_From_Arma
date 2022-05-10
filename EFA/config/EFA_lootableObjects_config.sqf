@@ -1,4 +1,5 @@
-systemChat "EFA_lootableObjects loaded";
+systemChat "EFA_lootableObjects_config loaded";
+
 EFA_lootableObjects = [
   "waterbottle_01_pack_f.p3d",
 

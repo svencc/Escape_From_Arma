@@ -8,7 +8,7 @@ MISSION_ROOT_PATH = call {
 
 // register EFA functions
 if (isServer) then {
-	call compile preprocessFileLineNumbers ("EFA\init.sqf");
+	[] call compile preprocessFileLineNumbers ("EFA\init.sqf");
 };
 
 
