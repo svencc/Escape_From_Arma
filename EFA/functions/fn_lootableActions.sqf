@@ -1,29 +1,31 @@
 params["_xDimension", "_yDimension"];
 
+private _xDimensionGridCenter = _xDimension + EFA_cacheManager_gridHalfSize;
+private _yDimensionGridCenter = _yDimension + EFA_cacheManager_gridHalfSize;
+
 private _lootableObjects = nearestTerrainObjects  [
-  [_xDimension + EFA_cacheManager_gridHalfSize, _yDimension + EFA_cacheManager_gridHalfSize, 0], 
+  [_xDimensionGridCenter, _yDimensionGridCenter, 0], 
   [], 
   EFA_cacheManager_gridDiagonalLength, 
   false
 ];
 private _preparedObjects = 0; // DEBUG
-systemChat format["Terrain Objects: %1", count _lootableObjects]; // DEBUG
-systemChat str EFA_lootableObjects;
+systemChat format["Terrain Objects: %1", (count _lootableObjects)]; // DEBUG
 {
   private _terrainObject = _x;
   private _modelInfo = getModelInfo _terrainObject;
   private _modelName = _modelInfo select 0;
   private _modelPos = _modelInfo select 3;
   private _modelWorldPos = getPos _terrainObject;
-  private _modelInArea = _modelPos inArea [
-    [_xDimension, _yDimension],
+  private _modelInArea = _terrainObject inArea [
+    [_xDimensionGridCenter, _yDimensionGridCenter],
     EFA_cacheManager_gridHalfSize,
     EFA_cacheManager_gridHalfSize,
     0,
     true
   ];
 
-  _modelInArea = true;
+  // _modelInArea = true;
 
   if( _modelInArea && (_modelName in EFA_lootableObjects) ) then {
     _preparedObjects = _preparedObjects + 1; // DEBUG
@@ -75,4 +77,4 @@ systemChat str EFA_lootableObjects;
   };
 } forEach _lootableObjects;
 
-systemChat format["Prepared Objects: %1", _preparedObjects]; // DEBUG
+systemChat format["lootable Objects created: %1", _preparedObjects]; // DEBUG

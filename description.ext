@@ -2,7 +2,7 @@
 author = "Tonic";     
 
 // Mission name
-onLoadName = "Escape From ARMA"; 
+onLoadName = "EFA::Escape_From_Anywhere"; 
 
 // Description
 onLoadMission = "Anywhere near Chernarus in near Future ..."; 

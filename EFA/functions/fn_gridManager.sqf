@@ -33,9 +33,7 @@ EFA_fn_gridManager = {
       EFA_gridCache set [_playersGrid, (serverTime + EFA_cacheManager_invalidateGridTime)];
       [_playersGrid, _xDimension, _yDimension] call fn_draw_marker;
       [_xDimension * 100, _yDimension * 100] call EFA_fnc_lootableActions;
-      systemChat format["%1 has been entered!", _playersGridName];
-    } else {
-      "systemChat format[""%1 has been visited already ..."", _playersGridName]";
+      systemChat format["%1 has been entered by %2!", _playersGridName, name _aPlayer];
     };
   } forEach allPlayers;
 };
@@ -45,11 +43,52 @@ if (isNil "EFA_gridCache") then {
   EFA_gridCache = createHashMap;
 };
 
-  private _gridManagerTrigger = createTrigger["EmptyDetector", [0,0], false];
+private _gridManagerTrigger = createTrigger["EmptyDetector", [0,0], false];
 _gridManagerTrigger setTriggerInterval 0.5;
 _gridManagerTrigger setTriggerStatements [
   "
     thistrigger call EFA_fn_gridManager;
+    false
+  ",
+  "",
+  ""
+];
+
+
+
+
+
+EFA_fn_gridManager_cleanup = {
+  {
+    private _grid = _x;
+    private _gridInvalidationTime = _y;
+    private _allPlayerGrids = [];
+
+    {
+      private _aPlayer = _x;
+      private _allPlayerGrids pushBack (mapGridPosition _aPlayer);
+    } forEach allPlayers;
+
+    if (serverTime > _gridInvalidationTime) then {
+     if (_grid in _allPlayerGrids) then {
+      // player is in this grid; so we do not clear this grid!
+     } else {
+      // spieler gerade in diesem grid? 
+      // wenn nein; grid entfernen!
+      //  hole alle Objekte aus grid-Mitte -> radius Diagonal
+      //  inAray?
+      //   dann löschen?
+     };
+    }
+
+  } forEach EFA_gridCache;
+};
+
+private _gridManagerCleanupTrigger = createTrigger["EmptyDetector", [0,0], false];
+_gridManagerCleanupTrigger setTriggerInterval 1;
+_gridManagerCleanupTrigger setTriggerStatements [
+  "
+    thistrigger call EFA_fn_gridManager_cleanup;
     false
   ",
   "",
