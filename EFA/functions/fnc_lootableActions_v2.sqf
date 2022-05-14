@@ -24,12 +24,12 @@ systemChat format["Terrain Objects: %1", (count _lootableObjects)]; // DEBUG
 
     private _helper = "GroundWeaponHolder_Scripted" createVehicle [0,0,0];
     _helper enableSimulationGlobal false;
+    _helper setVariable["EFA_LOOTABLE_HELPER", true];
 
     private _helperBoundingBox = boundingBoxReal _helper;
     private _helperP1 = _helperBoundingBox select 0;
     private _helperP2 = _helperBoundingBox select 1;
     private _helperHeight = abs ((_helperP2 select 2) - (_helperP1 select 2));
-    systemChat format["hh %1", _helperHeight];
 
     private _modelBoundingBox = boundingBoxReal _terrainObject;
     private _modelP1 = _modelBoundingBox select 0;
@@ -41,10 +41,10 @@ systemChat format["Terrain Objects: %1", (count _lootableObjects)]; // DEBUG
       (_modelPos select 1) + (_modelWorldPos select 1),
       (_modelPos select 2) + (_modelWorldPos select 2) + (_modelHeight - (_helperHeight))
     ];
-    systemChat format["_modelPos %1", _modelPos];
+    /*systemChat format["_modelPos %1", _modelPos];
     systemChat format["_modelWorldPos %1", _modelWorldPos];
     systemChat format["_modelHeight %1", _modelHeight];
-    systemChat format["_helperHeight %1", _helperHeight];
+    systemChat format["_helperHeight %1", _helperHeight];*/
     _helper setVectorDir (vectorDir _terrainObject);
     
     [_helper, _helper] call ace_common_fnc_claim;
