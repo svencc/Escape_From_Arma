@@ -10,7 +10,5 @@ private _reducedState = false;
 	_reducedState = _reducedState && _playerInArea;
 } forEach _statePerPlayer;
 
-systemChat _statePerPlayer
-
 _reducedState;
     
