@@ -1,3 +1,5 @@
+systemChat "fn_lootableActions execute";
+
 params["_xDimension", "_yDimension"];
 
 private _xDimensionGridCenter = _xDimension + EFA_cacheManager_gridHalfSize;
@@ -24,8 +26,6 @@ systemChat format["Terrain Objects: %1", (count _lootableObjects)]; // DEBUG
     0,
     true
   ];
-
-  // _modelInArea = true;
 
   if( _modelInArea && (_modelName in EFA_lootableObjects) ) then {
     _preparedObjects = _preparedObjects + 1; // DEBUG

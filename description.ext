@@ -2,7 +2,7 @@
 author = "Tonic";     
 
 // Mission name
-onLoadName = "EFA::Escape_From_Anywhere"; 
+onLoadName = "EFA | Escape From Anywhere"; 
 
 // Description
 onLoadMission = "Anywhere near Chernarus in near Future ..."; 
@@ -14,7 +14,7 @@ loadScreen = "pictures\EFA.paa";
 
 class Header
 {
-	gameType = CTI;     // Game type
+	gameType = Survival;     // Game type
 	minPlayers = 1;	    // minimum number of players the mission supports
 	maxPlayers = 4;		// maximum number of players the mission supports
 };
@@ -28,6 +28,8 @@ respawnDialog = 1;
 respawnDelay = 1;
 //playerRespawnTime=10;
 respawnButton = 1;
+
+forceRotorLibSimulation = 1;
 
 
 // GRAD MONEYMENU
